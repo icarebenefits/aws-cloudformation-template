@@ -1,0 +1,51 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "BI Security Groups",
+
+  "Parameters": {
+    "VpcId": {
+      "Description" : "VPC Id is using for Security Group",
+      "Type": "String",
+      "ConstraintDescription" : "must be an valid EC2 VPC Id."
+    }
+  },
+
+  "Resources" : {
+
+    "MySQLReplicaSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupName": "mysql-replica-sg",
+        "GroupDescription" : "Access control for MySQL Replica",
+        "Tags" :  [ {
+          "Key" : "Name",
+          "Value" : "MySQL-Replica-SG"
+        } ],
+        "VpcId" : { "Ref" : "VpcId" },
+        "SecurityGroupIngress" : [
+          {"IpProtocol" : "tcp", "FromPort" : "22", "ToPort" : "22", "CidrIp" : "172.31.4.219/32"},
+          {"IpProtocol" : "tcp", "FromPort" : "3306", "ToPort" : "3306", "CidrIp" : "172.31.4.219/32"}
+        ]
+      }
+    }
+
+  },
+
+  "Outputs": {
+    "MySQLReplicaSecurityGroup": {
+      "Description": "The security group ID to use for MySQL Replicas",
+      "Value": {
+        "Fn::GetAtt": [
+          "MySQLReplicaSecurityGroup",
+          "GroupId"
+        ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-MySQLReplica-SecurityGroupID"
+        }
+      }
+    }
+  }
+}

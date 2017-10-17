@@ -1,0 +1,19 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "Definition for IAM User",
+
+  "Resources" : {
+    "CloudWatch": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Groups": [ "" ],
+        "LoginProfile": "",
+        "ManagedPolicyArns": [ "" ],
+        "Path": "",
+        "Policies": [ "" ],
+        "UserName": ""
+      }
+    }
+  }
+}
