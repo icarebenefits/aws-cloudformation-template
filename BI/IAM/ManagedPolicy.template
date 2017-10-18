@@ -1,0 +1,28 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "BI Managed Policies Definition",
+  "Resources": {
+    "CloudWatchPutMetricData": {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "Description": "Policy for putting Metric Data into CloudWatch",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "Stmt1508241388000",
+              "Effect": "Allow",
+              "Action": [
+                "cloudwatch:PutMetricData"
+              ],
+              "Resource": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "ManagedPolicyName": "CloudWatchPutMetricData"
+      }
+    }
+  }
+}

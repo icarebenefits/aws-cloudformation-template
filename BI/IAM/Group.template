@@ -1,8 +1,19 @@
 {
-  "AWSTemplateFormatVersion" : "2010-09-09",
-
-  "Description" : "",
-
-  "Resources" : {
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "",
+  "Resources": {
+    "SysOps": {
+      "Type": "AWS::IAM::Group",
+      "Properties": {
+        "GroupName": "SYSOPS",
+        "ManagedPolicyArns": [
+          ""
+        ],
+        "Path": "",
+        "Policies": [
+          ""
+        ]
+      }
+    }
   }
 }

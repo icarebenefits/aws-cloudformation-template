@@ -4,15 +4,28 @@
   "Description" : "Definition for IAM User",
 
   "Resources" : {
-    "CloudWatch": {
+    "CloudWatchPutMetricData": {
       "Type": "AWS::IAM::User",
       "Properties": {
-        "Groups": [ "" ],
-        "LoginProfile": "",
-        "ManagedPolicyArns": [ "" ],
-        "Path": "",
-        "Policies": [ "" ],
-        "UserName": ""
+        "UserName": "cloudWatchPutMetricData",
+        "ManagedPolicyArns": ["arn:aws:iam::075767294061:policy/CloudWatchPutMetricData"]
+      }
+    }
+  },
+
+  "Outputs": {
+    "CloudWatchPutMetricDataUser": {
+      "Description": "The user is used for cloudwatch operations",
+      "Value": {
+        "Fn::GetAtt": [
+          "CloudWatchPutMetricData",
+          "Arn"
+        ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-CloudWatchPutMetricData"
+        }
       }
     }
   }
