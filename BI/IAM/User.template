@@ -10,6 +10,18 @@
         "UserName": "cloudWatchPutMetricData",
         "ManagedPolicyArns": ["arn:aws:iam::075767294061:policy/CloudWatchPutMetricData"]
       }
+    },
+
+    "ClaudiaLambdaDeployment": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "UserName": "ClaudiaLambdaDeployment",
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/AmazonAPIGatewayAdministrator",
+          "arn:aws:iam::aws:policy/AWSLambdaFullAccess",
+          "arn:aws:iam::aws:policy/IAMFullAccess"
+        ]
+      }
     }
   },
 
@@ -25,6 +37,21 @@
       "Export": {
         "Name": {
           "Fn::Sub": "${AWS::StackName}-CloudWatchPutMetricData"
+        }
+      }
+    },
+
+    "ClaudiaLambdaDeploymentUser": {
+      "Description": "The user is used for cloudia deployment",
+      "Value": {
+        "Fn::GetAtt": [
+          "ClaudiaLambdaDeployment",
+          "Arn"
+        ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-ClaudiaLambdaDeployment"
         }
       }
     }

@@ -1,0 +1,40 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "",
+
+  "Resources" : {
+    "LambdaMonitorSubscription": {
+        "Type" : "AWS::SNS::Subscription",
+        "Properties" : {
+          "Endpoint" : "arn:aws:lambda:ap-southeast-1:075767294061:function:monitor",
+          "Protocol" : "lambda",
+          "TopicArn": {"Ref": "BotsNotificationsTopic"}
+      }
+    },
+    "BotsNotificationsTopic": {
+      "Type" : "AWS::SNS::Topic",
+      "Properties" : {
+        "DisplayName" : "BotsNotifications",
+        "TopicName" : "bots-notifications"
+      }
+    }
+  },
+
+  "Outputs": {
+    "BotsNotificationsTopic": {
+      "Description": "Topic for Bots Notifications",
+      "Value": {
+        "Fn::GetAtt": [
+          "BotsNotificationsTopic",
+          "TopicName"
+        ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-BotsNotifications"
+        }
+      }
+    }
+  }
+}
