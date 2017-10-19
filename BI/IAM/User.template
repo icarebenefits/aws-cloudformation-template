@@ -22,6 +22,16 @@
           "arn:aws:iam::aws:policy/IAMFullAccess"
         ]
       }
+    },
+
+    "OpsidianSlackAIBot": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "UserName": "OpsidianSlackAIBot",
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/ReadOnlyAccess"
+        ]
+      }
     }
   },
 
@@ -52,6 +62,21 @@
       "Export": {
         "Name": {
           "Fn::Sub": "${AWS::StackName}-ClaudiaLambdaDeployment"
+        }
+      }
+    },
+
+    "OpsidianSlackAIBotUser": {
+      "Description": "The user is used for opsidian Slack Bot",
+      "Value": {
+        "Fn::GetAtt": [
+          "OpsidianSlackAIBot",
+          "Arn"
+        ]
+      },
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-OpsidianSlackAIBot"
         }
       }
     }
