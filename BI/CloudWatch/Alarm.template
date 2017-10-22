@@ -36,7 +36,6 @@
         "Unit": "Count"
       }
     },
-
     "MagentoMySQLSlave1ReplicationDelay": {
       "Type": "AWS::CloudWatch::Alarm",
       "Properties": {
@@ -47,6 +46,61 @@
         "AlarmName": "magento-mysql-slave1-ReplicationDelay",
         "Dimensions": [
           {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationDelay",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Count"
+      }
+    },
+
+    "TLSMySQLSlave1ReplicationRunning": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Running Status Check",
+        "AlarmName": "tls-mysql-slave1-ReplicationRunning",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationRunning",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 1,
+        "Unit": "Count"
+      }
+    },
+    "TLSMySQLSlave1ReplicationDelay": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Delay Status Check",
+        "AlarmName": "tls-mysql-slave1-ReplicationDelay",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
         ],
         "Period": 300,
         "EvaluationPeriods": 1,

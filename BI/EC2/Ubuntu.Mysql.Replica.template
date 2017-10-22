@@ -94,7 +94,7 @@
         "InstanceType": {"Ref": "InstanceType"},
         "Tags" :  [ {
           "Key" : "Name",
-          "Value" : "magento-mysql1-slave"
+          "Value" : "magento-mysql-slave1"
         } ],
         "KeyName": "bikey",
         "NetworkInterfaces": [
@@ -148,7 +148,7 @@
         "InstanceType": {"Ref": "InstanceType"},
         "Tags" :  [ {
           "Key" : "Name",
-          "Value" : "mifos-mysql1-slave"
+          "Value" : "mifos-mysql-slave1"
         } ],
         "KeyName": "bikey",
         "NetworkInterfaces": [
@@ -170,6 +170,60 @@
       }
     },
     "MifosEth0": {
+      "Type": "AWS::EC2::NetworkInterface",
+      "Properties": {
+        "Description": "eth0",
+        "GroupSet": [
+          {
+            "Fn::ImportValue": {
+              "Fn::Sub": "${NetworkStackName}-MySQLReplica-SecurityGroupID"
+            }
+          }
+        ],
+        "SourceDestCheck": "true",
+        "SubnetId": {"Ref": "SubnetID"},
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Interface 0"
+          },
+          {
+            "Key": "Interface",
+            "Value": "eth0"
+          }
+        ]
+      }
+    },
+
+    "TLSSlave1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": {"Ref": "ImageID"},
+        "InstanceType": {"Ref": "InstanceType"},
+        "Tags" :  [ {
+          "Key" : "Name",
+          "Value" : "tls-mysql-slave1"
+        } ],
+        "KeyName": "bikey",
+        "NetworkInterfaces": [
+          {
+            "NetworkInterfaceId": {
+              "Ref": "TLSEth0"
+            },
+            "DeviceIndex": "0"
+          }
+        ],
+        "BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/sda1",
+            "Ebs": {
+              "VolumeSize": "50"
+            }
+          }
+        ]
+      }
+    },
+    "TLSEth0": {
       "Type": "AWS::EC2::NetworkInterface",
       "Properties": {
         "Description": "eth0",
