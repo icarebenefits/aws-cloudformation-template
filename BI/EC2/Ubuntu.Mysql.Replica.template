@@ -91,7 +91,7 @@
       "Type": "AWS::EC2::Instance",
       "Properties": {
         "ImageId": {"Ref": "ImageID"},
-        "InstanceType": {"Ref": "InstanceType"},
+        "InstanceType": "t2.small",
         "Tags" :  [ {
           "Key" : "Name",
           "Value" : "magento-mysql-slave1"
@@ -144,7 +144,7 @@
     "MifosSlave1": {
       "Type": "AWS::EC2::Instance",
       "Properties": {
-        "ImageId": {"Ref": "ImageID"},
+        "ImageId": "ami-af87cacc",
         "InstanceType": {"Ref": "InstanceType"},
         "Tags" :  [ {
           "Key" : "Name",
@@ -170,6 +170,60 @@
       }
     },
     "MifosEth0": {
+      "Type": "AWS::EC2::NetworkInterface",
+      "Properties": {
+        "Description": "eth0",
+        "GroupSet": [
+          {
+            "Fn::ImportValue": {
+              "Fn::Sub": "${NetworkStackName}-MySQLReplica-SecurityGroupID"
+            }
+          }
+        ],
+        "SourceDestCheck": "true",
+        "SubnetId": {"Ref": "SubnetID"},
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "Interface 0"
+          },
+          {
+            "Key": "Interface",
+            "Value": "eth0"
+          }
+        ]
+      }
+    },
+
+    "B2BSlave1": {
+      "Type": "AWS::EC2::Instance",
+      "Properties": {
+        "ImageId": "ami-af87cacc",
+        "InstanceType": {"Ref": "InstanceType"},
+        "Tags" :  [ {
+          "Key" : "Name",
+          "Value" : "b2b-mysql-slave1"
+        } ],
+        "KeyName": "bikey",
+        "NetworkInterfaces": [
+          {
+            "NetworkInterfaceId": {
+              "Ref": "B2BEth0"
+            },
+            "DeviceIndex": "0"
+          }
+        ],
+        "BlockDeviceMappings": [
+          {
+            "DeviceName": "/dev/sda1",
+            "Ebs": {
+              "VolumeSize": "50"
+            }
+          }
+        ]
+      }
+    },
+    "B2BEth0": {
       "Type": "AWS::EC2::NetworkInterface",
       "Properties": {
         "Description": "eth0",

@@ -9,6 +9,143 @@
     }
   },
   "Resources": {
+    "MagentoMySQLSlave1CPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "magento-mysql-slave1-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "MagentoMySQLSlave1CPUCreditBalance": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 CPUCreditBalance",
+        "AlarmName": "magento-mysql-slave1-CPUCreditBalance",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUCreditBalance",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 5,
+        "Unit": "Count"
+      }
+    },
+    "MagentoMySQLSlave1MemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "magento-mysql-slave1-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "MagentoMySQLSlave1SwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "magento-mysql-slave1-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "MagentoMySQLSlave1DiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "magento-mysql-slave1-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0db56f114655cd22b"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
     "MagentoMySQLSlave1ReplicationRunning": {
       "Type": "AWS::CloudWatch::Alarm",
       "Properties": {
@@ -64,6 +201,527 @@
       }
     },
 
+    "MifosMySQLSlave1CPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "mifos-mysql-slave1-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "MifosMySQLSlave1CPUCreditBalance": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 CPUCreditBalance",
+        "AlarmName": "mifos-mysql-slave1-CPUCreditBalance",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUCreditBalance",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 5,
+        "Unit": "Count"
+      }
+    },
+    "MifosMySQLSlave1MemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "mifos-mysql-slave1-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "MifosMySQLSlave1SwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "mifos-mysql-slave1-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "MifosMySQLSlave1DiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "mifos-mysql-slave1-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "MifosMySQLSlave1ReplicationRunning": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Running Status Check",
+        "AlarmName": "mifos-mysql-slave1-ReplicationRunning",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationRunning",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 1,
+        "Unit": "Count"
+      }
+    },
+    "MifosMySQLSlave1ReplicationDelay": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Delay Status Check",
+        "AlarmName": "mifos-mysql-slave1-ReplicationDelay",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c410f09a9a1dd5d6"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationDelay",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Count"
+      }
+    },
+
+    "B2BMySQLSlave1CPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "b2b-mysql-slave1-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "B2BMySQLSlave1CPUCreditBalance": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 CPUCreditBalance",
+        "AlarmName": "b2b-mysql-slave1-CPUCreditBalance",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUCreditBalance",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 5,
+        "Unit": "Count"
+      }
+    },
+    "B2BMySQLSlave1MemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "b2b-mysql-slave1-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "B2BMySQLSlave1SwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "b2b-mysql-slave1-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "B2BMySQLSlave1DiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "b2b-mysql-slave1-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "B2BMySQLSlave1ReplicationRunning": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Running Status Check",
+        "AlarmName": "b2b-mysql-slave1-ReplicationRunning",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationRunning",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 1,
+        "Unit": "Count"
+      }
+    },
+    "B2BMySQLSlave1ReplicationDelay": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "MySQL Slave Replication Delay Status Check",
+        "AlarmName": "b2b-mysql-slave1-ReplicationDelay",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c3175cacb1515666"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "ReplicationDelay",
+        "Namespace": "MySQL",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Count"
+      }
+    },
+
+    "TLSMySQLSlave1CPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "TLS MySQL Slave1 CPUUtilization",
+        "AlarmName": "tls-mysql-slave1-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "TLSMySQLSlave1CPUCreditBalance": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "TLS MySQL Slave1 CPUCreditBalance",
+        "AlarmName": "tls-mysql-slave1-CPUCreditBalance",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUCreditBalance",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "LessThanThreshold",
+        "Threshold": 5,
+        "Unit": "Count"
+      }
+    },
+    "TLSMySQLSlave1MemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "tls-mysql-slave1-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "TLSMySQLSlave1SwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "tls-mysql-slave1-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "TLSMySQLSlave1DiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "tls-mysql-slave1-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-0c8d159be4e9ab083"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
     "TLSMySQLSlave1ReplicationRunning": {
       "Type": "AWS::CloudWatch::Alarm",
       "Properties": {
