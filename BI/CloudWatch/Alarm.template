@@ -775,6 +775,339 @@
         "Threshold": 50,
         "Unit": "Count"
       }
+    },
+
+    "BIMainCPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "bi-main-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-64b7b9c0"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "BIMainMemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "bi-main-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-64b7b9c0"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "BIMainSwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "bi-main-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-64b7b9c0"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "BIMainDiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "bi-main-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-64b7b9c0"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+
+    "DWHLagacyCPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "dwh-legacy-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-19e423be"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "DWHLagacyMemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "dwh-legacy-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-19e423be"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "DWHLagacySwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "dwh-legacy-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-19e423be"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "DWHLagacyDiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "dwh-legacy-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-19e423be"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+
+    "RLagacyCPUUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance CPUUtilization",
+        "AlarmName": "r-legacy-CPUUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-4e25e1e9"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "CPUUtilization",
+        "Namespace": "AWS/EC2",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
+    },
+    "RLagacyMemoryUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance MemoryUtilization",
+        "AlarmName": "r-legacy-MemoryUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-4e25e1e9"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "MemoryUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 90,
+        "Unit": "Percent"
+      }
+    },
+    "RLagacySwapUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance SwapUtilization",
+        "AlarmName": "r-legacy-SwapUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-4e25e1e9"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "SwapUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 50,
+        "Unit": "Percent"
+      }
+    },
+    "RLagacyDiskSpaceUtilization": {
+      "Type": "AWS::CloudWatch::Alarm",
+      "Properties": {
+        "AlarmActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "AlarmDescription": "EC2 Instance DiskSpaceUtilization",
+        "AlarmName": "r-legacy-DiskSpaceUtilization",
+        "Dimensions": [
+          {"Name": "InstanceId", "Value": "i-4e25e1e9"},
+          {"Name": "Filesystem", "Value": "/dev/xvda1"},
+          {"Name": "MountPath", "Value": "/"}
+        ],
+        "Period": 300,
+        "EvaluationPeriods": 1,
+        "InsufficientDataActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "MetricName": "DiskSpaceUtilization",
+        "Namespace": "System/Linux",
+        "OKActions": [
+          "arn:aws:sns:ap-southeast-1:075767294061:bots-notifications"
+        ],
+        "Statistic": "Average",
+        "ComparisonOperator": "GreaterThanThreshold",
+        "Threshold": 80,
+        "Unit": "Percent"
+      }
     }
   }
 }
